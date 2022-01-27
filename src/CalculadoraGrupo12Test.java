@@ -40,6 +40,12 @@ class CalculadoraGrupo12Test {
 		
 		assertEquals(resultado, 30, "Error al evaluar");
 		
+		try {
+			resultado = calc.calculate("0 1 /");
+			System.out.println(resultado);
+			fail("Permite division entre 0");
+		} catch (Exception e) {}
+		
 	}
 
 }

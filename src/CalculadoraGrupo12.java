@@ -67,6 +67,9 @@ public class CalculadoraGrupo12 implements Calculadora {
 		}
 		Double op1 = stack.remove();
 		Double op2 = stack.remove();
+		if (op2 == 0) {
+			throw new Exception("División entre 0");
+		}
 		stack.add(op1 / op2);
 		return op1 / op2;
 	}
