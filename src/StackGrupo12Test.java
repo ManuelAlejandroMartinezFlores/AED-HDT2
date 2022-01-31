@@ -1,9 +1,23 @@
+/**
+ * @author Mario Puente
+ * @author Manuel Martínez
+ * @author Luis Montenegro
+ * @version 1.1
+ * @since 27/01/2022
+ * 
+ * StackGrupo12Test.
+ * Pruebas unitarias para evaluar la efectividad de los métodos del ADT.
+ */
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
 class StackGrupo12Test {
-
+	
+	/**
+	 * Evalua si se añaden correctamente los objetos al Stack
+	 */
 	@Test
 	void testAdd() {
 		Stack<Integer> stack = new StackGrupo12<Integer>();
@@ -16,6 +30,9 @@ class StackGrupo12Test {
 		assertEquals(101, stack.size(), "No agrega correctamente");
 	}
 
+	/**
+	 * Evalua si se eliminan correctamente los objetos del Stack
+	 */
 	@Test
 	void testRemove() {
 		Stack<Integer> stack = new StackGrupo12<Integer>();
@@ -27,6 +44,9 @@ class StackGrupo12Test {
 		assertEquals(rmv, 99, "Error en peek");
 	}
 
+	/**
+	 * Evalua si se muestra el último elemento del Stack
+	 */
 	@Test
 	void testPeek() {
 		Stack<Integer> stack = new StackGrupo12<Integer>();
@@ -40,6 +60,9 @@ class StackGrupo12Test {
 		assertEquals(peek, 99, "Error en peek");
 	}
 
+	/**
+	 * Evalua si el Stack indica si está vacio correctamente
+	 */
 	@Test
 	void testEmpty() {
 		Stack<Integer> stack = new StackGrupo12<Integer>();
@@ -51,6 +74,9 @@ class StackGrupo12Test {
 		
 	}
 
+	/**
+	 * Evalua si el Stack muestra su size correctamente
+	 */
 	@Test
 	void testSize() {
 		Stack<Integer> stack = new StackGrupo12<Integer>();

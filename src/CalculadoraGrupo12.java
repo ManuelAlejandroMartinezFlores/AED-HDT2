@@ -1,3 +1,14 @@
+/**
+ * @author Mario Puente
+ * @author Manuel Martínez
+ * @author Luis Montenegro
+ * @version 1.1
+ * @since 27/01/2022
+ * 
+ * CalculadoraGrupo12.
+ * Evalua operaciones en formato POSTFIX.
+ */
+
 import java.util.Vector;
 
 
@@ -5,21 +16,29 @@ public class CalculadoraGrupo12 implements Calculadora {
 	
 	Stack<Double> stack = new StackGrupo12<Double>();
 	
+	
+	/**
+	 * Evalua la operación tipo POSTFIX
+	 */
 	public double calculate(String operation) throws Exception {
 		stack = new StackGrupo12<Double>();
 		double resultado = 0.0;
 		String[] data = operation.split(" ");
 		for (String s : data) {
 			if (s.equals("+")) {
-				resultado = suma();
+				suma();
 			} else if (s.equals("-")) {
-				resultado = resta();
+				resta();
 			} else if (s.equals("*")) {
-				resultado = multiplicacion();
+				multiplicacion();
 			} else if (s.equals("/")) {
-				resultado = division();
+				division();
 			} else {
-			stack.add(Double.valueOf(s));
+				try {
+					stack.add(Double.valueOf(s));
+				} catch (Exception e) {
+					throw new Exception("Caracter invalido");
+				}
 			}
 		}
 		
@@ -27,51 +46,62 @@ public class CalculadoraGrupo12 implements Calculadora {
 		if (stack.size() > 1) {
 			throw new Exception("Demasiados operandos");
 		}
-		return resultado;
+		return stack.remove();
 	}
 	
-	
-	private double suma() throws Exception {
+	/**
+	 * Suma los dos ultimos elementos del stack
+	 * @throws Exception si no hay suficientes operandos
+	 */
+	private void suma() throws Exception {
 		if (stack.size() < 2) {
 			throw new Exception("No hay suficientes operandos");
 		}
-		Double op1 = stack.remove();
-		Double op2 = stack.remove();
-		stack.add(op1 + op2);
-		return op1 + op2;
+		Double opB = stack.remove();
+		Double opA = stack.remove();
+		stack.add(opA + opB);
 	}
 	
-	private double resta() throws Exception {
+	/**
+	 * Resta los dos ultimos elementos del stack
+	 * @throws Exception si no hay suficientes operandos
+	 */
+	private void resta() throws Exception {
 		if (stack.size() < 2) {
 			throw new Exception("No hay suficientes operandos");
 		}
-		Double op1 = stack.remove();
-		Double op2 = stack.remove();
-		stack.add(op1 - op2);
-		return op1 - op2;
+		Double opB = stack.remove();
+		Double opA = stack.remove();
+		stack.add(opA - opB);
 	}
 	
-	private double multiplicacion() throws Exception {
+	/**
+	 * Multiplica los dos ultimos elementos del stack
+	 * @throws Exception si no hay suficientes operandos
+	 */
+	private void multiplicacion() throws Exception {
 		if (stack.size() < 2) {
 			throw new Exception("No hay suficientes operandos");
 		}
-		Double op1 = stack.remove();
-		Double op2 = stack.remove();
-		stack.add(op1 * op2);
-		return op1 * op2;
+		Double opB = stack.remove();
+		Double opA = stack.remove();
+		stack.add(opA * opB);
 	}
 	
-	private double division() throws Exception {
+	/**
+	 * Divide los dos ultimos elementos del stack
+	 * @throws Exception si no hay suficientes operandos o hay division entre 0
+	 */
+	private void division() throws Exception {
 		if (stack.size() < 2) {
 			throw new Exception("No hay suficientes operandos");
 		}
-		Double op1 = stack.remove();
-		Double op2 = stack.remove();
-		if (op2 == 0) {
+		Double opB = stack.remove();
+		Double opA = stack.remove();
+		if (opB == 0) {
 			throw new Exception("División entre 0");
 		}
-		stack.add(op1 / op2);
-		return op1 / op2;
+		stack.add(opA / opB);
 	}
 	
 	

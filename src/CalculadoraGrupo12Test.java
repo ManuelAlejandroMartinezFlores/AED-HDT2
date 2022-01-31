@@ -1,9 +1,23 @@
+/**
+ * @author Mario Puente
+ * @author Manuel Martínez
+ * @author Luis Montenegro
+ * @version 1.1
+ * @since 27/01/2022
+ * 
+ * CalculadoraGrupo12Test.
+ * Pruebas unitarias para evaluar la efectividad del método del ADT.
+ */
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
 class CalculadoraGrupo12Test {
 
+	/**
+	 * Evalua si la calculadora evalua las expresiones correctamente y lanza excepciones cuando sea necesario
+	 */
 	@Test
 	void testCalculate() {
 		Calculadora calc = new CalculadoraGrupo12();
@@ -41,7 +55,7 @@ class CalculadoraGrupo12Test {
 		assertEquals(resultado, 30, "Error al evaluar");
 		
 		try {
-			resultado = calc.calculate("0 1 /");
+			resultado = calc.calculate("1 0 /");
 			System.out.println(resultado);
 			fail("Permite division entre 0");
 		} catch (Exception e) {}
