@@ -11,6 +11,8 @@
 
 import java.util.Scanner;
 
+import javax.sound.sampled.SourceDataLine;
+
 public class Vista {
 
 	private Scanner scan;
@@ -20,11 +22,12 @@ public class Vista {
 	}
 	
 	/**
-	 * Solicita al usuario la ubicacion del archivo
+	 * Solicita al usuario el path del archivo
 	 * @return path del archivo
 	 */
 	public String getPath() {
 		System.out.println("Favor ingrese el path del archivo .txt");
+		System.out.println("Para su comodidad, coloque el archivo en el mismo directorio que este proyecto.");
 		return scan.nextLine();
 	}
 	
