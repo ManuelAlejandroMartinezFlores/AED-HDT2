@@ -17,15 +17,10 @@ public class Controlador {
 		Vista vista = new Vista();
 		Calculadora calc = new CalculadoraGrupo12();
 		ArrayList<String> data = new ArrayList<String>();
-		boolean exito = false;
-		while (!exito) {
-			try {
-				String path = vista.getPath();
-				data = Archivos.leer(path);
-				exito = true;
-			} catch (Exception e) {
-				vista.mostrarEx();
-			}
+		try {
+			data = Archivos.leer("datos.txt");
+		} catch (Exception e) {
+			vista.mostrarEx();
 		}
 		
 		String resultado;
@@ -38,8 +33,7 @@ public class Controlador {
 			
 			vista.mostrarResultado(operacion, resultado);
 		}
-		
-		vista.cerrar();
+
 	}
 	
 }
