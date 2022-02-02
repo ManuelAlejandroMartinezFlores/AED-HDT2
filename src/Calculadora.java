@@ -1,5 +1,5 @@
 
 public interface Calculadora {
 
-	public double calculate(String operation) throws Exception;
+	public double calculate(String operation);
 }

@@ -15,7 +15,7 @@ public class Vista {
 	 * Muestra un mensaje en caso de excepcion
 	 */
 	public void mostrarEx() {
-		System.out.println("Favor ingrese un valor válido");
+		System.out.println("No se encontró el archivo");
 	}
 	
 	/**

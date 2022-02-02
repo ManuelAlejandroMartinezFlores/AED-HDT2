@@ -20,33 +20,37 @@ public class CalculadoraGrupo12 implements Calculadora {
 	/**
 	 * Evalua la operación tipo POSTFIX
 	 */
-	public double calculate(String operation) throws Exception {
-		stack = new StackGrupo12<Double>();
-		double resultado = 0.0;
-		String[] data = operation.split(" ");
-		for (String s : data) {
-			if (s.equals("+")) {
-				suma();
-			} else if (s.equals("-")) {
-				resta();
-			} else if (s.equals("*")) {
-				multiplicacion();
-			} else if (s.equals("/")) {
-				division();
-			} else {
-				try {
-					stack.add(Double.valueOf(s));
-				} catch (Exception e) {
-					throw new Exception("Caracter invalido");
+	public double calculate(String operation) {
+		try {
+			stack = new StackGrupo12<Double>();
+			double resultado = 0.0;
+			String[] data = operation.split(" ");
+			for (String s : data) {
+				if (s.equals("+")) {
+					suma();
+				} else if (s.equals("-")) {
+					resta();
+				} else if (s.equals("*")) {
+					multiplicacion();
+				} else if (s.equals("/")) {
+					division();
+				} else {
+					try {
+						stack.add(Double.valueOf(s));
+					} catch (Exception e) {
+						throw new Exception("Caracter invalido");
+					}
 				}
 			}
+			
+			
+			if (stack.size() > 1) {
+				throw new Exception("Demasiados operandos");
+			}
+			return stack.remove();
+		} catch (Exception e) {
+			return 0;
 		}
-		
-		
-		if (stack.size() > 1) {
-			throw new Exception("Demasiados operandos");
-		}
-		return stack.remove();
 	}
 	
 	/**

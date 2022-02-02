@@ -22,44 +22,23 @@ class CalculadoraGrupo12Test {
 	void testCalculate() {
 		Calculadora calc = new CalculadoraGrupo12();
 		double resultado = 0;
-		try {
-			resultado = calc.calculate("1 2 + 4 * 3 +");
-		} catch (Exception e) {
-			fail("Error inesperado");
-		}
-		assertEquals(resultado, 15, "Error al evaluar");
+		resultado = calc.calculate("1 2 + 4 * 3 +");
+		assertEquals(resultado, 15, 0.01, "Error al evaluar");
 		
-		try {
-			calc.calculate("1 2 3 +");
-			fail("Acepta demasiados operandos");
-		} catch (Exception e) {}
+		resultado = calc.calculate("1 2 3 +");
+		assertEquals(resultado, 0, 0.01, "Acepta demasiados operandos");
 		
-		try {
-			calc.calculate("1 2 a");
-			fail("Acepta caracteres que no son operandos");
-		} catch (Exception e) {}
+		resultado = calc.calculate("1 2 a");
+		assertEquals(resultado, 0, 0.01, "Acepta operandos no válidos");
 		
-		try {
-			calc.calculate("1 2 + *");
-			fail("Acepta muy pocos operandos");
-		} catch (Exception e) {}
+		resultado = calc.calculate("1 2 + *");
+		assertEquals(resultado, 0, 0.01, "Acepta demasiados operadores");
 		
-		try {
-			resultado = 0;
-			resultado = calc.calculate("6 2 3 + *");
-		} catch (Exception e) {
-			System.out.print(e);
-			fail("Error inesperado");
-		}
+		resultado = calc.calculate("1 0 /");
+		assertEquals(resultado, 0, 0.01, "Acepta división entre 0");
 		
-		assertEquals(resultado, 30, "Error al evaluar");
-		
-		try {
-			resultado = calc.calculate("1 0 /");
-			System.out.println(resultado);
-			fail("Permite division entre 0");
-		} catch (Exception e) {}
-		
+		resultado = calc.calculate("6 2 3 + *");
+		assertEquals(resultado, 30, 0.01, "Error al evaluar");
 	}
 
 }
